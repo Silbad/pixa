@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "pixa";
+    src: url("./pixa.ttf?247d65814630c6ba19b704915b4c3de1") format("truetype"),
+url("./pixa.woff?247d65814630c6ba19b704915b4c3de1") format("woff"),
+url("./pixa.woff2?247d65814630c6ba19b704915b4c3de1") format("woff2");
+}
+
+[class^="pixa-"]::before,
+[class*=" pixa-"]::before {
+    display: inline-block;
+    font-family: pixa !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: text-bottom;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* sizing */
+.pixa-2x {
+    font-size: 2rem;
+}
+
+.pixa-3x {
+    font-size: 3rem;
+}
+
+.pixa-4x {
+    font-size: 4rem;
+}
+
+.pixa-5x {
+    font-size: 5rem;
+}
+
+/* codepoints*/
+.pixa-attachment::before { content: "\f101"; }
+.pixa-bee::before { content: "\f102"; }
+.pixa-bell-o::before { content: "\f103"; }
+.pixa-bell::before { content: "\f104"; }
+.pixa-bomb::before { content: "\f105"; }
+.pixa-briefcase::before { content: "\f106"; }
+.pixa-brush::before { content: "\f107"; }
+.pixa-cat-d::before { content: "\f108"; }
+.pixa-cell-o::before { content: "\f109"; }
+.pixa-cell::before { content: "\f10a"; }
+.pixa-coffee::before { content: "\f10b"; }
+.pixa-cursor-arrow::before { content: "\f10c"; }
+.pixa-delivery::before { content: "\f10d"; }
+.pixa-dog-d::before { content: "\f10e"; }
+.pixa-duck::before { content: "\f10f"; }
+.pixa-feather::before { content: "\f110"; }
+.pixa-file-code-o::before { content: "\f111"; }
+.pixa-file-code::before { content: "\f112"; }
+.pixa-file-doc-o::before { content: "\f113"; }
+.pixa-file-doc::before { content: "\f114"; }
+.pixa-file-pdf-o::before { content: "\f115"; }
+.pixa-file-pdf::before { content: "\f116"; }
+.pixa-fist::before { content: "\f117"; }
+.pixa-hourglass::before { content: "\f118"; }
+.pixa-invader-1::before { content: "\f119"; }
+.pixa-invader-2::before { content: "\f11a"; }
+.pixa-invader-3::before { content: "\f11b"; }
+.pixa-loader-1::before { content: "\f11c"; }
+.pixa-mushroom::before { content: "\f11d"; }
+.pixa-pill::before { content: "\f11e"; }
+.pixa-pistol::before { content: "\f11f"; }
+.pixa-prince::before { content: "\f120"; }
+.pixa-print::before { content: "\f121"; }
+.pixa-spider::before { content: "\f122"; }
+.pixa-spray::before { content: "\f123"; }
+.pixa-star::before { content: "\f124"; }
+.pixa-transport-bus::before { content: "\f125"; }
+.pixa-transport-car::before { content: "\f126"; }
+.pixa-transport-metro::before { content: "\f127"; }
+.pixa-trophy::before { content: "\f128"; }
+.pixa-watch::before { content: "\f129"; }
+.pixa-wine::before { content: "\f12a"; }
