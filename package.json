@@ -1,0 +1,12 @@
+{
+    "name": "pixa",
+    "version": "1.0.0",
+    "description": "The iconic pixel art font and CSS toolkit",
+    "main": "index.js",
+    "repository": "https://github.com/Silbad/pixa.git",
+    "author": "silbad",
+    "license": "MPL-2",
+    "scripts": {
+        "build": "fantasticon --normalize true -p pixa icons -o dist"
+    }
+}
