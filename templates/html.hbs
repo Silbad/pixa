@@ -47,7 +47,6 @@
             border-radius: 3px 3px 0 0;
             cursor: pointer;
             line-height: 85px;
-            font-size: 2rem;
             color: #000;
         }
 
@@ -105,7 +104,7 @@
 
         <div class="preview" data-key="{{ ../prefix }} {{ ../prefix }}-{{ @key }}">
             <span class="inner" title="{{ @key }}">
-                <{{ ../tag }} class="{{ ../prefix }} {{ ../prefix }}-{{ @key }}"></{{ ../tag }}>
+                <{{ ../tag }} class="{{ ../prefix }} {{ ../prefix }}-{{ @key }} {{ ../prefix }}-2x"></{{ ../tag }}>
             </span>
             <br>
             <span class="label" title="{{ @key }}">{{ @key }}</span>
@@ -115,6 +114,10 @@
     </div>
     <h2>Sizing</h2>
     <div class="d-size">
+        <h3>1x</h3>
+        <p>
+            <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin"></{{ tag }}>
+        </p>
         <h3>2x</h3>
         <p>
             <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-2x"></{{ tag }}> <code>Add class "{{ prefix }}-2x"</code>
@@ -134,7 +137,7 @@
     </div>
 
     <footer>
-        Pixa v1.0.0 - <a href="https://github.com/Silbad/pixa" target="_blank">GitHub</a> - <a href="https://silbad.com" target="_blank">Author</a>
+        Pixa v1.1.0 - <a href="https://github.com/Silbad/pixa" target="_blank">GitHub</a> - <a href="https://silbad.com" target="_blank">Author</a>
     </footer>
 
 </body>

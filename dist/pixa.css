@@ -1,8 +1,8 @@
 @font-face {
     font-family: "pixa";
-    src: url("./pixa.ttf?247d65814630c6ba19b704915b4c3de1") format("truetype"),
-url("./pixa.woff?247d65814630c6ba19b704915b4c3de1") format("woff"),
-url("./pixa.woff2?247d65814630c6ba19b704915b4c3de1") format("woff2");
+    src: url("./pixa.ttf?e8aa1734d3e023913d3154041f9ba24a") format("truetype"),
+url("./pixa.woff?e8aa1734d3e023913d3154041f9ba24a") format("woff"),
+url("./pixa.woff2?e8aa1734d3e023913d3154041f9ba24a") format("woff2");
 }
 
 [class^="pixa-"]::before,
@@ -37,45 +37,63 @@ url("./pixa.woff2?247d65814630c6ba19b704915b4c3de1") format("woff2");
 }
 
 /* codepoints*/
-.pixa-attachment::before { content: "\f101"; }
-.pixa-bee::before { content: "\f102"; }
-.pixa-bell-o::before { content: "\f103"; }
-.pixa-bell::before { content: "\f104"; }
-.pixa-bomb::before { content: "\f105"; }
-.pixa-briefcase::before { content: "\f106"; }
-.pixa-brush::before { content: "\f107"; }
-.pixa-cat-d::before { content: "\f108"; }
-.pixa-cell-o::before { content: "\f109"; }
-.pixa-cell::before { content: "\f10a"; }
-.pixa-coffee::before { content: "\f10b"; }
-.pixa-cursor-arrow::before { content: "\f10c"; }
-.pixa-delivery::before { content: "\f10d"; }
-.pixa-dog-d::before { content: "\f10e"; }
-.pixa-duck::before { content: "\f10f"; }
-.pixa-feather::before { content: "\f110"; }
-.pixa-file-code-o::before { content: "\f111"; }
-.pixa-file-code::before { content: "\f112"; }
-.pixa-file-doc-o::before { content: "\f113"; }
-.pixa-file-doc::before { content: "\f114"; }
-.pixa-file-pdf-o::before { content: "\f115"; }
-.pixa-file-pdf::before { content: "\f116"; }
-.pixa-fist::before { content: "\f117"; }
-.pixa-hourglass::before { content: "\f118"; }
-.pixa-invader-1::before { content: "\f119"; }
-.pixa-invader-2::before { content: "\f11a"; }
-.pixa-invader-3::before { content: "\f11b"; }
-.pixa-loader-1::before { content: "\f11c"; }
-.pixa-mushroom::before { content: "\f11d"; }
-.pixa-pill::before { content: "\f11e"; }
-.pixa-pistol::before { content: "\f11f"; }
-.pixa-prince::before { content: "\f120"; }
-.pixa-print::before { content: "\f121"; }
-.pixa-spider::before { content: "\f122"; }
-.pixa-spray::before { content: "\f123"; }
-.pixa-star::before { content: "\f124"; }
-.pixa-transport-bus::before { content: "\f125"; }
-.pixa-transport-car::before { content: "\f126"; }
-.pixa-transport-metro::before { content: "\f127"; }
-.pixa-trophy::before { content: "\f128"; }
-.pixa-watch::before { content: "\f129"; }
-.pixa-wine::before { content: "\f12a"; }
+.pixa-anglerfish::before { content: "\f101"; }
+.pixa-attachment::before { content: "\f102"; }
+.pixa-bee::before { content: "\f103"; }
+.pixa-beer::before { content: "\f104"; }
+.pixa-bell-o::before { content: "\f105"; }
+.pixa-bell::before { content: "\f106"; }
+.pixa-blobfish::before { content: "\f107"; }
+.pixa-blog-1041uuu::before { content: "\f108"; }
+.pixa-blog-malec::before { content: "\f109"; }
+.pixa-bluetooth::before { content: "\f10a"; }
+.pixa-bomb::before { content: "\f10b"; }
+.pixa-briefcase::before { content: "\f10c"; }
+.pixa-brush::before { content: "\f10d"; }
+.pixa-cat-d::before { content: "\f10e"; }
+.pixa-cell-o::before { content: "\f10f"; }
+.pixa-cell::before { content: "\f110"; }
+.pixa-coffee::before { content: "\f111"; }
+.pixa-crab::before { content: "\f112"; }
+.pixa-credit-card::before { content: "\f113"; }
+.pixa-creeper::before { content: "\f114"; }
+.pixa-cursor-arrow::before { content: "\f115"; }
+.pixa-delivery::before { content: "\f116"; }
+.pixa-desktop::before { content: "\f117"; }
+.pixa-dog-d::before { content: "\f118"; }
+.pixa-duck::before { content: "\f119"; }
+.pixa-feather::before { content: "\f11a"; }
+.pixa-file-code-o::before { content: "\f11b"; }
+.pixa-file-code::before { content: "\f11c"; }
+.pixa-file-doc-o::before { content: "\f11d"; }
+.pixa-file-doc::before { content: "\f11e"; }
+.pixa-file-pdf-o::before { content: "\f11f"; }
+.pixa-file-pdf::before { content: "\f120"; }
+.pixa-fist::before { content: "\f121"; }
+.pixa-heart-o::before { content: "\f122"; }
+.pixa-heart::before { content: "\f123"; }
+.pixa-hourglass::before { content: "\f124"; }
+.pixa-invader-1::before { content: "\f125"; }
+.pixa-invader-2::before { content: "\f126"; }
+.pixa-invader-3::before { content: "\f127"; }
+.pixa-loader-1::before { content: "\f128"; }
+.pixa-mushroom::before { content: "\f129"; }
+.pixa-panda::before { content: "\f12a"; }
+.pixa-pill::before { content: "\f12b"; }
+.pixa-pistol::before { content: "\f12c"; }
+.pixa-prince::before { content: "\f12d"; }
+.pixa-print::before { content: "\f12e"; }
+.pixa-score::before { content: "\f12f"; }
+.pixa-search::before { content: "\f130"; }
+.pixa-spider::before { content: "\f131"; }
+.pixa-spray::before { content: "\f132"; }
+.pixa-squid::before { content: "\f133"; }
+.pixa-star::before { content: "\f134"; }
+.pixa-sword::before { content: "\f135"; }
+.pixa-transport-bus::before { content: "\f136"; }
+.pixa-transport-car::before { content: "\f137"; }
+.pixa-transport-metro::before { content: "\f138"; }
+.pixa-trophy::before { content: "\f139"; }
+.pixa-watch::before { content: "\f13a"; }
+.pixa-wine::before { content: "\f13b"; }
+.pixa-zombie::before { content: "\f13c"; }
