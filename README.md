@@ -28,4 +28,5 @@ yarn build
 
 ## Pixel Artists
 
+* [1041uuu](https://1041uuu.tumblr.com/)
 * [Susan Kare](https://kare.com/)
