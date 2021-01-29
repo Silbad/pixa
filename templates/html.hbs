@@ -1,144 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>{{ name }}</title>
 
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 10px 20px;
-        }
+    <head>
+        <meta charset="utf-8">
+        <title>{{ name }}</title>
 
-        h1 {
-            text-align: center;
-            text-transform: capitalize;
-        }
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 0;
+                padding: 10px 20px;
+            }
 
-        .d-flex {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
+            h1 {
+                text-align: center;
+                text-transform: capitalize;
+            }
 
-        .preview {
-            width: 100px;
-            display: flex;
-            flex-direction: column;
-            margin: 10px;
-            border-radius: 3px;
-            box-shadow: 0 0 1px 1px rgba(0,0,0,0.8);
-        }
+            .d-flex {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
 
-        a,
-        .preview:hover .inner,
-        .preview:hover .label {
-            color: #0d6efd;
-        }
+            .preview {
+                width: 100px;
+                display: flex;
+                flex-direction: column;
+                margin: 10px;
+                border-radius: 3px;
+                box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8);
+            }
 
-        a:hover {
-            text-decoration: none;
-        }
+            a,
+            .preview:hover .inner,
+            .preview:hover .label {
+                color: #0d6efd;
+            }
 
-        .preview .inner {
-            width: 100%;
-            text-align: center;
-            border-radius: 3px 3px 0 0;
-            cursor: pointer;
-            line-height: 85px;
-            color: #000;
-        }
+            a:hover {
+                text-decoration: none;
+            }
 
-        .label {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 5px;
-            font-size: 0.7rem;
-            font-family: Monaco, monospace;
-            color: #000;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            background: #ddd;
-            text-align: center;
-            border-radius: 0 0 3px 3px;
-            cursor: pointer;
-        }
+            .preview .inner {
+                width: 100%;
+                text-align: center;
+                border-radius: 3px 3px 0 0;
+                cursor: pointer;
+                line-height: 85px;
+                color: #000;
+            }
 
-        code {
-            background: #ddd;
-            border-radius: 3px;
-            padding: 5px;
-            margin-left: 10px;
-        }
+            .label {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 5px;
+                font-size: 0.7rem;
+                font-family: Monaco, monospace;
+                color: #000;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                background: #DDD;
+                text-align: center;
+                border-radius: 0 0 3px 3px;
+                cursor: pointer;
+                transition: all .3s linear;
+            }
 
-        footer {
-            text-align: center;
-            font-size: 0.8rem;
-            margin: 5px;
-        }
-    </style>
+            code {
+                background: #DDD;
+                border-radius: 3px;
+                padding: 5px;
+                margin-left: 10px;
+            }
 
-    <script>
-        document.addEventListener('click', function (event) {
-            if (!event.target.matches('.inner,.inner i,.label')) return;
-            event.preventDefault();
-            const icon = event.target.closest('.preview').getAttribute('data-key');
-            navigator.clipboard.writeText(icon).then(function () {
-                alert('Icon\'s data copied!');
-            });
-        }, false);
-    </script>
+            footer {
+                text-align: center;
+                font-size: 0.8rem;
+                margin: 5px;
+            }
+        </style>
 
-    <link rel="stylesheet" type="text/css" href="{{ name }}.css" />
-    <link rel="icon" href="favicon.ico" />
-</head>
-<body>
+        <script>
+            document.addEventListener('click', function (event) {
+                if (!event.target.matches('.inner,.inner i,.label')) return;
+                event.preventDefault();
+                const icon = event.target.closest('.preview').getAttribute('data-key');
+                navigator.clipboard.writeText(icon).then(function () {
+                    document.querySelectorAll('.label').forEach(function (el) {
+                        el.innerHTML = el.getAttribute('data-text');
+                        el.style.backgroundColor = '#ddd';
+                    });
+                    event.target.closest('.preview').querySelector('.label').innerHTML = 'Copied!';
+                    event.target.closest('.preview').querySelector('.label').style.backgroundColor = '#DDFBBF';
+                    setTimeout(function () {
+                        event.target.closest('.preview').querySelector('.label').innerHTML = event.target.closest('.preview').querySelector('.label').getAttribute('data-text');
+                        event.target.closest('.preview').querySelector('.label').style.backgroundColor = '#DDD';
+                    }, 3000);
+                });
+            }, false);
+        </script>
 
-    <h1>{{ name }}</h1>
+        <link rel="stylesheet" type="text/css" href="{{ name }}.css" />
+        <link rel="icon" href="favicon.ico" />
+    </head>
 
-    <h2>Icons</h2>
-    <div class="d-flex">
-    {{# each assets }}
+    <body>
 
-        <div class="preview" data-key="{{ ../prefix }} {{ ../prefix }}-{{ @key }}">
-            <span class="inner" title="{{ @key }}">
-                <{{ ../tag }} class="{{ ../prefix }} {{ ../prefix }}-{{ @key }} {{ ../prefix }}-2x"></{{ ../tag }}>
-            </span>
-            <br>
-            <span class="label" title="{{ @key }}">{{ @key }}</span>
+        <h1>{{ name }}</h1>
+
+        <h2>Icons</h2>
+        <div class="d-flex">
+            {{# each assets }}
+
+            <div class="preview" data-key="{{ ../prefix }} {{ ../prefix }}-{{ @key }}">
+                <span class="inner" title="{{ @key }}">
+                    <{{ ../tag }} class="{{ ../prefix }} {{ ../prefix }}-{{ @key }} {{ ../prefix }}-2x"></{{ ../tag }}>
+                </span>
+                <br>
+                <span class="label" data-text="{{ @key }}" title="{{ @key }}">{{ @key }}</span>
+            </div>
+
+            {{/ each }}
+        </div>
+        <h2>Sizing</h2>
+        <div class="d-size">
+            <h3>1x</h3>
+            <p>
+                <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin"></{{ tag }}>
+            </p>
+            <h3>2x</h3>
+            <p>
+                <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-2x"></{{ tag }}>
+                <code>Add class "{{ prefix }}-2x"</code>
+            </p>
+            <h3>3x</h3>
+            <p>
+                <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-3x"></{{ tag }}>
+                <code>Add class "{{ prefix }}-3x"</code>
+            </p>
+            <h3>4x</h3>
+            <p>
+                <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-4x"></{{ tag }}>
+                <code>Add class "{{ prefix }}-4x"</code>
+            </p>
+            <h3>5x</h3>
+            <p>
+                <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-5x"></{{ tag }}>
+                <code>Add class "{{ prefix }}-5x"</code>
+            </p>
         </div>
 
-    {{/ each }}
-    </div>
-    <h2>Sizing</h2>
-    <div class="d-size">
-        <h3>1x</h3>
-        <p>
-            <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin"></{{ tag }}>
-        </p>
-        <h3>2x</h3>
-        <p>
-            <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-2x"></{{ tag }}> <code>Add class "{{ prefix }}-2x"</code>
-        </p>
-        <h3>3x</h3>
-        <p>
-            <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-3x"></{{ tag }}> <code>Add class "{{ prefix }}-3x"</code>
-        </p>
-        <h3>4x</h3>
-        <p>
-            <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-4x"></{{ tag }}> <code>Add class "{{ prefix }}-4x"</code>
-        </p>
-        <h3>5x</h3>
-        <p>
-            <{{ tag }} class="{{ prefix }} {{ prefix }}-mushroom {{ prefix }}-spin {{ prefix }}-5x"></{{ tag }}> <code>Add class "{{ prefix }}-5x"</code>
-        </p>
-    </div>
+        <footer>
+            Pixa v1.1.0 - <a href="https://github.com/Silbad/pixa" target="_blank">GitHub</a> - <a
+                href="https://silbad.com" target="_blank">Author</a>
+        </footer>
 
-    <footer>
-        Pixa v1.1.0 - <a href="https://github.com/Silbad/pixa" target="_blank">GitHub</a> - <a href="https://silbad.com" target="_blank">Author</a>
-    </footer>
+    </body>
 
-</body>
 </html>

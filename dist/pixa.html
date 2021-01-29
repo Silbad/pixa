@@ -1,673 +1,799 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>pixa</title>
 
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 10px 20px;
-        }
+    <head>
+        <meta charset="utf-8">
+        <title>pixa</title>
 
-        h1 {
-            text-align: center;
-            text-transform: capitalize;
-        }
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 0;
+                padding: 10px 20px;
+            }
 
-        .d-flex {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
+            h1 {
+                text-align: center;
+                text-transform: capitalize;
+            }
 
-        .preview {
-            width: 100px;
-            display: flex;
-            flex-direction: column;
-            margin: 10px;
-            border-radius: 3px;
-            box-shadow: 0 0 1px 1px rgba(0,0,0,0.8);
-        }
+            .d-flex {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
 
-        a,
-        .preview:hover .inner,
-        .preview:hover .label {
-            color: #0d6efd;
-        }
+            .preview {
+                width: 100px;
+                display: flex;
+                flex-direction: column;
+                margin: 10px;
+                border-radius: 3px;
+                box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8);
+            }
 
-        a:hover {
-            text-decoration: none;
-        }
+            a,
+            .preview:hover .inner,
+            .preview:hover .label {
+                color: #0d6efd;
+            }
 
-        .preview .inner {
-            width: 100%;
-            text-align: center;
-            border-radius: 3px 3px 0 0;
-            cursor: pointer;
-            line-height: 85px;
-            color: #000;
-        }
+            a:hover {
+                text-decoration: none;
+            }
 
-        .label {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 5px;
-            font-size: 0.7rem;
-            font-family: Monaco, monospace;
-            color: #000;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            background: #ddd;
-            text-align: center;
-            border-radius: 0 0 3px 3px;
-            cursor: pointer;
-        }
+            .preview .inner {
+                width: 100%;
+                text-align: center;
+                border-radius: 3px 3px 0 0;
+                cursor: pointer;
+                line-height: 85px;
+                color: #000;
+            }
 
-        code {
-            background: #ddd;
-            border-radius: 3px;
-            padding: 5px;
-            margin-left: 10px;
-        }
+            .label {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 5px;
+                font-size: 0.7rem;
+                font-family: Monaco, monospace;
+                color: #000;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                background: #DDD;
+                text-align: center;
+                border-radius: 0 0 3px 3px;
+                cursor: pointer;
+                transition: all .3s linear;
+            }
 
-        footer {
-            text-align: center;
-            font-size: 0.8rem;
-            margin: 5px;
-        }
-    </style>
+            code {
+                background: #DDD;
+                border-radius: 3px;
+                padding: 5px;
+                margin-left: 10px;
+            }
 
-    <script>
-        document.addEventListener('click', function (event) {
-            if (!event.target.matches('.inner,.inner i,.label')) return;
-            event.preventDefault();
-            const icon = event.target.closest('.preview').getAttribute('data-key');
-            navigator.clipboard.writeText(icon).then(function () {
-                alert('Icon\'s data copied!');
-            });
-        }, false);
-    </script>
+            footer {
+                text-align: center;
+                font-size: 0.8rem;
+                margin: 5px;
+            }
+        </style>
 
-    <link rel="stylesheet" type="text/css" href="pixa.css" />
-    <link rel="icon" href="favicon.ico" />
-</head>
-<body>
+        <script>
+            document.addEventListener('click', function (event) {
+                if (!event.target.matches('.inner,.inner i,.label')) return;
+                event.preventDefault();
+                const icon = event.target.closest('.preview').getAttribute('data-key');
+                navigator.clipboard.writeText(icon).then(function () {
+                    document.querySelectorAll('.label').forEach(function (el) {
+                        el.innerHTML = el.getAttribute('data-text');
+                        el.style.backgroundColor = '#ddd';
+                    });
+                    event.target.closest('.preview').querySelector('.label').innerHTML = 'Copied!';
+                    event.target.closest('.preview').querySelector('.label').style.backgroundColor = '#DDFBBF';
+                    setTimeout(function () {
+                        event.target.closest('.preview').querySelector('.label').innerHTML = event.target.closest('.preview').querySelector('.label').getAttribute('data-text');
+                        event.target.closest('.preview').querySelector('.label').style.backgroundColor = '#DDD';
+                    }, 3000);
+                });
+            }, false);
+        </script>
 
-    <h1>pixa</h1>
+        <link rel="stylesheet" type="text/css" href="pixa.css" />
+        <link rel="icon" href="favicon.ico" />
+    </head>
 
-    <h2>Icons</h2>
-    <div class="d-flex">
+    <body>
 
-        <div class="preview" data-key="pixa pixa-anglerfish">
-            <span class="inner" title="anglerfish">
-                <i class="pixa pixa-anglerfish pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="anglerfish">anglerfish</span>
+        <h1>pixa</h1>
+
+        <h2>Icons</h2>
+        <div class="d-flex">
+
+            <div class="preview" data-key="pixa pixa-acorn">
+                <span class="inner" title="acorn">
+                    <i class="pixa pixa-acorn pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="acorn" title="acorn">acorn</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-anglerfish">
+                <span class="inner" title="anglerfish">
+                    <i class="pixa pixa-anglerfish pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="anglerfish" title="anglerfish">anglerfish</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-artist-1041uuu">
+                <span class="inner" title="artist-1041uuu">
+                    <i class="pixa pixa-artist-1041uuu pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="artist-1041uuu" title="artist-1041uuu">artist-1041uuu</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-artist-kek">
+                <span class="inner" title="artist-kek">
+                    <i class="pixa pixa-artist-kek pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="artist-kek" title="artist-kek">artist-kek</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-artist-malec">
+                <span class="inner" title="artist-malec">
+                    <i class="pixa pixa-artist-malec pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="artist-malec" title="artist-malec">artist-malec</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-attachment">
+                <span class="inner" title="attachment">
+                    <i class="pixa pixa-attachment pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="attachment" title="attachment">attachment</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-axe">
+                <span class="inner" title="axe">
+                    <i class="pixa pixa-axe pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="axe" title="axe">axe</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-bee">
+                <span class="inner" title="bee">
+                    <i class="pixa pixa-bee pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="bee" title="bee">bee</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-beer">
+                <span class="inner" title="beer">
+                    <i class="pixa pixa-beer pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="beer" title="beer">beer</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-bell-o">
+                <span class="inner" title="bell-o">
+                    <i class="pixa pixa-bell-o pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="bell-o" title="bell-o">bell-o</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-bell">
+                <span class="inner" title="bell">
+                    <i class="pixa pixa-bell pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="bell" title="bell">bell</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-bird">
+                <span class="inner" title="bird">
+                    <i class="pixa pixa-bird pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="bird" title="bird">bird</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-blobfish">
+                <span class="inner" title="blobfish">
+                    <i class="pixa pixa-blobfish pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="blobfish" title="blobfish">blobfish</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-bluetooth">
+                <span class="inner" title="bluetooth">
+                    <i class="pixa pixa-bluetooth pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="bluetooth" title="bluetooth">bluetooth</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-bomb">
+                <span class="inner" title="bomb">
+                    <i class="pixa pixa-bomb pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="bomb" title="bomb">bomb</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-briefcase">
+                <span class="inner" title="briefcase">
+                    <i class="pixa pixa-briefcase pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="briefcase" title="briefcase">briefcase</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-brush">
+                <span class="inner" title="brush">
+                    <i class="pixa pixa-brush pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="brush" title="brush">brush</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-calculator">
+                <span class="inner" title="calculator">
+                    <i class="pixa pixa-calculator pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="calculator" title="calculator">calculator</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-cat">
+                <span class="inner" title="cat">
+                    <i class="pixa pixa-cat pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="cat" title="cat">cat</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-cell-o">
+                <span class="inner" title="cell-o">
+                    <i class="pixa pixa-cell-o pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="cell-o" title="cell-o">cell-o</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-cell">
+                <span class="inner" title="cell">
+                    <i class="pixa pixa-cell pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="cell" title="cell">cell</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-coffee">
+                <span class="inner" title="coffee">
+                    <i class="pixa pixa-coffee pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="coffee" title="coffee">coffee</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-crab">
+                <span class="inner" title="crab">
+                    <i class="pixa pixa-crab pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="crab" title="crab">crab</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-credit-card">
+                <span class="inner" title="credit-card">
+                    <i class="pixa pixa-credit-card pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="credit-card" title="credit-card">credit-card</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-creeper">
+                <span class="inner" title="creeper">
+                    <i class="pixa pixa-creeper pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="creeper" title="creeper">creeper</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-cursor-arrow">
+                <span class="inner" title="cursor-arrow">
+                    <i class="pixa pixa-cursor-arrow pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="cursor-arrow" title="cursor-arrow">cursor-arrow</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-delivery">
+                <span class="inner" title="delivery">
+                    <i class="pixa pixa-delivery pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="delivery" title="delivery">delivery</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-desktop">
+                <span class="inner" title="desktop">
+                    <i class="pixa pixa-desktop pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="desktop" title="desktop">desktop</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-dog">
+                <span class="inner" title="dog">
+                    <i class="pixa pixa-dog pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="dog" title="dog">dog</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-duck">
+                <span class="inner" title="duck">
+                    <i class="pixa pixa-duck pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="duck" title="duck">duck</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-feather">
+                <span class="inner" title="feather">
+                    <i class="pixa pixa-feather pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="feather" title="feather">feather</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-file-code-o">
+                <span class="inner" title="file-code-o">
+                    <i class="pixa pixa-file-code-o pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="file-code-o" title="file-code-o">file-code-o</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-file-code">
+                <span class="inner" title="file-code">
+                    <i class="pixa pixa-file-code pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="file-code" title="file-code">file-code</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-file-doc-o">
+                <span class="inner" title="file-doc-o">
+                    <i class="pixa pixa-file-doc-o pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="file-doc-o" title="file-doc-o">file-doc-o</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-file-doc">
+                <span class="inner" title="file-doc">
+                    <i class="pixa pixa-file-doc pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="file-doc" title="file-doc">file-doc</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-file-pdf-o">
+                <span class="inner" title="file-pdf-o">
+                    <i class="pixa pixa-file-pdf-o pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="file-pdf-o" title="file-pdf-o">file-pdf-o</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-file-pdf">
+                <span class="inner" title="file-pdf">
+                    <i class="pixa pixa-file-pdf pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="file-pdf" title="file-pdf">file-pdf</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-fist">
+                <span class="inner" title="fist">
+                    <i class="pixa pixa-fist pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="fist" title="fist">fist</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-heart-o">
+                <span class="inner" title="heart-o">
+                    <i class="pixa pixa-heart-o pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="heart-o" title="heart-o">heart-o</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-heart">
+                <span class="inner" title="heart">
+                    <i class="pixa pixa-heart pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="heart" title="heart">heart</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-hourglass">
+                <span class="inner" title="hourglass">
+                    <i class="pixa pixa-hourglass pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="hourglass" title="hourglass">hourglass</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-invader-1">
+                <span class="inner" title="invader-1">
+                    <i class="pixa pixa-invader-1 pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="invader-1" title="invader-1">invader-1</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-invader-2">
+                <span class="inner" title="invader-2">
+                    <i class="pixa pixa-invader-2 pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="invader-2" title="invader-2">invader-2</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-invader-3">
+                <span class="inner" title="invader-3">
+                    <i class="pixa pixa-invader-3 pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="invader-3" title="invader-3">invader-3</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-loader-1">
+                <span class="inner" title="loader-1">
+                    <i class="pixa pixa-loader-1 pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="loader-1" title="loader-1">loader-1</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-mushroom">
+                <span class="inner" title="mushroom">
+                    <i class="pixa pixa-mushroom pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="mushroom" title="mushroom">mushroom</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-panda">
+                <span class="inner" title="panda">
+                    <i class="pixa pixa-panda pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="panda" title="panda">panda</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-pill">
+                <span class="inner" title="pill">
+                    <i class="pixa pixa-pill pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="pill" title="pill">pill</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-pistol">
+                <span class="inner" title="pistol">
+                    <i class="pixa pixa-pistol pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="pistol" title="pistol">pistol</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-prince">
+                <span class="inner" title="prince">
+                    <i class="pixa pixa-prince pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="prince" title="prince">prince</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-print">
+                <span class="inner" title="print">
+                    <i class="pixa pixa-print pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="print" title="print">print</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-score">
+                <span class="inner" title="score">
+                    <i class="pixa pixa-score pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="score" title="score">score</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-search">
+                <span class="inner" title="search">
+                    <i class="pixa pixa-search pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="search" title="search">search</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-skull-1">
+                <span class="inner" title="skull-1">
+                    <i class="pixa pixa-skull-1 pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="skull-1" title="skull-1">skull-1</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-skull-2">
+                <span class="inner" title="skull-2">
+                    <i class="pixa pixa-skull-2 pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="skull-2" title="skull-2">skull-2</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-sliders">
+                <span class="inner" title="sliders">
+                    <i class="pixa pixa-sliders pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="sliders" title="sliders">sliders</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-spider">
+                <span class="inner" title="spider">
+                    <i class="pixa pixa-spider pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="spider" title="spider">spider</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-spray">
+                <span class="inner" title="spray">
+                    <i class="pixa pixa-spray pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="spray" title="spray">spray</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-squid">
+                <span class="inner" title="squid">
+                    <i class="pixa pixa-squid pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="squid" title="squid">squid</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-star">
+                <span class="inner" title="star">
+                    <i class="pixa pixa-star pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="star" title="star">star</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-sword">
+                <span class="inner" title="sword">
+                    <i class="pixa pixa-sword pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="sword" title="sword">sword</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-tag">
+                <span class="inner" title="tag">
+                    <i class="pixa pixa-tag pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="tag" title="tag">tag</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-transport-bus">
+                <span class="inner" title="transport-bus">
+                    <i class="pixa pixa-transport-bus pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="transport-bus" title="transport-bus">transport-bus</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-transport-car">
+                <span class="inner" title="transport-car">
+                    <i class="pixa pixa-transport-car pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="transport-car" title="transport-car">transport-car</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-transport-metro">
+                <span class="inner" title="transport-metro">
+                    <i class="pixa pixa-transport-metro pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="transport-metro" title="transport-metro">transport-metro</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-trophy">
+                <span class="inner" title="trophy">
+                    <i class="pixa pixa-trophy pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="trophy" title="trophy">trophy</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-umbrella">
+                <span class="inner" title="umbrella">
+                    <i class="pixa pixa-umbrella pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="umbrella" title="umbrella">umbrella</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-watch">
+                <span class="inner" title="watch">
+                    <i class="pixa pixa-watch pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="watch" title="watch">watch</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-wine">
+                <span class="inner" title="wine">
+                    <i class="pixa pixa-wine pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="wine" title="wine">wine</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-world">
+                <span class="inner" title="world">
+                    <i class="pixa pixa-world pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="world" title="world">world</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-wrench">
+                <span class="inner" title="wrench">
+                    <i class="pixa pixa-wrench pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="wrench" title="wrench">wrench</span>
+            </div>
+
+
+            <div class="preview" data-key="pixa pixa-zombie">
+                <span class="inner" title="zombie">
+                    <i class="pixa pixa-zombie pixa-2x"></i>
+                </span>
+                <br>
+                <span class="label" data-text="zombie" title="zombie">zombie</span>
+            </div>
+
+        </div>
+        <h2>Sizing</h2>
+        <div class="d-size">
+            <h3>1x</h3>
+            <p>
+                <i class="pixa pixa-mushroom pixa-spin"></i>
+            </p>
+            <h3>2x</h3>
+            <p>
+                <i class="pixa pixa-mushroom pixa-spin pixa-2x"></i>
+                <code>Add class "pixa-2x"</code>
+            </p>
+            <h3>3x</h3>
+            <p>
+                <i class="pixa pixa-mushroom pixa-spin pixa-3x"></i>
+                <code>Add class "pixa-3x"</code>
+            </p>
+            <h3>4x</h3>
+            <p>
+                <i class="pixa pixa-mushroom pixa-spin pixa-4x"></i>
+                <code>Add class "pixa-4x"</code>
+            </p>
+            <h3>5x</h3>
+            <p>
+                <i class="pixa pixa-mushroom pixa-spin pixa-5x"></i>
+                <code>Add class "pixa-5x"</code>
+            </p>
         </div>
 
+        <footer>
+            Pixa v1.1.0 - <a href="https://github.com/Silbad/pixa" target="_blank">GitHub</a> - <a
+                href="https://silbad.com" target="_blank">Author</a>
+        </footer>
 
-        <div class="preview" data-key="pixa pixa-attachment">
-            <span class="inner" title="attachment">
-                <i class="pixa pixa-attachment pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="attachment">attachment</span>
-        </div>
+    </body>
 
-
-        <div class="preview" data-key="pixa pixa-bee">
-            <span class="inner" title="bee">
-                <i class="pixa pixa-bee pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="bee">bee</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-beer">
-            <span class="inner" title="beer">
-                <i class="pixa pixa-beer pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="beer">beer</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-bell-o">
-            <span class="inner" title="bell-o">
-                <i class="pixa pixa-bell-o pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="bell-o">bell-o</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-bell">
-            <span class="inner" title="bell">
-                <i class="pixa pixa-bell pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="bell">bell</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-blobfish">
-            <span class="inner" title="blobfish">
-                <i class="pixa pixa-blobfish pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="blobfish">blobfish</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-blog-1041uuu">
-            <span class="inner" title="blog-1041uuu">
-                <i class="pixa pixa-blog-1041uuu pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="blog-1041uuu">blog-1041uuu</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-blog-malec">
-            <span class="inner" title="blog-malec">
-                <i class="pixa pixa-blog-malec pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="blog-malec">blog-malec</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-bluetooth">
-            <span class="inner" title="bluetooth">
-                <i class="pixa pixa-bluetooth pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="bluetooth">bluetooth</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-bomb">
-            <span class="inner" title="bomb">
-                <i class="pixa pixa-bomb pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="bomb">bomb</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-briefcase">
-            <span class="inner" title="briefcase">
-                <i class="pixa pixa-briefcase pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="briefcase">briefcase</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-brush">
-            <span class="inner" title="brush">
-                <i class="pixa pixa-brush pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="brush">brush</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-cat-d">
-            <span class="inner" title="cat-d">
-                <i class="pixa pixa-cat-d pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="cat-d">cat-d</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-cell-o">
-            <span class="inner" title="cell-o">
-                <i class="pixa pixa-cell-o pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="cell-o">cell-o</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-cell">
-            <span class="inner" title="cell">
-                <i class="pixa pixa-cell pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="cell">cell</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-coffee">
-            <span class="inner" title="coffee">
-                <i class="pixa pixa-coffee pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="coffee">coffee</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-crab">
-            <span class="inner" title="crab">
-                <i class="pixa pixa-crab pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="crab">crab</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-credit-card">
-            <span class="inner" title="credit-card">
-                <i class="pixa pixa-credit-card pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="credit-card">credit-card</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-creeper">
-            <span class="inner" title="creeper">
-                <i class="pixa pixa-creeper pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="creeper">creeper</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-cursor-arrow">
-            <span class="inner" title="cursor-arrow">
-                <i class="pixa pixa-cursor-arrow pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="cursor-arrow">cursor-arrow</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-delivery">
-            <span class="inner" title="delivery">
-                <i class="pixa pixa-delivery pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="delivery">delivery</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-desktop">
-            <span class="inner" title="desktop">
-                <i class="pixa pixa-desktop pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="desktop">desktop</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-dog-d">
-            <span class="inner" title="dog-d">
-                <i class="pixa pixa-dog-d pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="dog-d">dog-d</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-duck">
-            <span class="inner" title="duck">
-                <i class="pixa pixa-duck pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="duck">duck</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-feather">
-            <span class="inner" title="feather">
-                <i class="pixa pixa-feather pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="feather">feather</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-file-code-o">
-            <span class="inner" title="file-code-o">
-                <i class="pixa pixa-file-code-o pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="file-code-o">file-code-o</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-file-code">
-            <span class="inner" title="file-code">
-                <i class="pixa pixa-file-code pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="file-code">file-code</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-file-doc-o">
-            <span class="inner" title="file-doc-o">
-                <i class="pixa pixa-file-doc-o pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="file-doc-o">file-doc-o</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-file-doc">
-            <span class="inner" title="file-doc">
-                <i class="pixa pixa-file-doc pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="file-doc">file-doc</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-file-pdf-o">
-            <span class="inner" title="file-pdf-o">
-                <i class="pixa pixa-file-pdf-o pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="file-pdf-o">file-pdf-o</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-file-pdf">
-            <span class="inner" title="file-pdf">
-                <i class="pixa pixa-file-pdf pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="file-pdf">file-pdf</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-fist">
-            <span class="inner" title="fist">
-                <i class="pixa pixa-fist pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="fist">fist</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-heart-o">
-            <span class="inner" title="heart-o">
-                <i class="pixa pixa-heart-o pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="heart-o">heart-o</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-heart">
-            <span class="inner" title="heart">
-                <i class="pixa pixa-heart pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="heart">heart</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-hourglass">
-            <span class="inner" title="hourglass">
-                <i class="pixa pixa-hourglass pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="hourglass">hourglass</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-invader-1">
-            <span class="inner" title="invader-1">
-                <i class="pixa pixa-invader-1 pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="invader-1">invader-1</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-invader-2">
-            <span class="inner" title="invader-2">
-                <i class="pixa pixa-invader-2 pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="invader-2">invader-2</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-invader-3">
-            <span class="inner" title="invader-3">
-                <i class="pixa pixa-invader-3 pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="invader-3">invader-3</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-loader-1">
-            <span class="inner" title="loader-1">
-                <i class="pixa pixa-loader-1 pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="loader-1">loader-1</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-mushroom">
-            <span class="inner" title="mushroom">
-                <i class="pixa pixa-mushroom pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="mushroom">mushroom</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-panda">
-            <span class="inner" title="panda">
-                <i class="pixa pixa-panda pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="panda">panda</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-pill">
-            <span class="inner" title="pill">
-                <i class="pixa pixa-pill pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="pill">pill</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-pistol">
-            <span class="inner" title="pistol">
-                <i class="pixa pixa-pistol pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="pistol">pistol</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-prince">
-            <span class="inner" title="prince">
-                <i class="pixa pixa-prince pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="prince">prince</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-print">
-            <span class="inner" title="print">
-                <i class="pixa pixa-print pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="print">print</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-score">
-            <span class="inner" title="score">
-                <i class="pixa pixa-score pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="score">score</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-search">
-            <span class="inner" title="search">
-                <i class="pixa pixa-search pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="search">search</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-spider">
-            <span class="inner" title="spider">
-                <i class="pixa pixa-spider pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="spider">spider</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-spray">
-            <span class="inner" title="spray">
-                <i class="pixa pixa-spray pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="spray">spray</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-squid">
-            <span class="inner" title="squid">
-                <i class="pixa pixa-squid pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="squid">squid</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-star">
-            <span class="inner" title="star">
-                <i class="pixa pixa-star pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="star">star</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-sword">
-            <span class="inner" title="sword">
-                <i class="pixa pixa-sword pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="sword">sword</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-transport-bus">
-            <span class="inner" title="transport-bus">
-                <i class="pixa pixa-transport-bus pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="transport-bus">transport-bus</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-transport-car">
-            <span class="inner" title="transport-car">
-                <i class="pixa pixa-transport-car pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="transport-car">transport-car</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-transport-metro">
-            <span class="inner" title="transport-metro">
-                <i class="pixa pixa-transport-metro pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="transport-metro">transport-metro</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-trophy">
-            <span class="inner" title="trophy">
-                <i class="pixa pixa-trophy pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="trophy">trophy</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-watch">
-            <span class="inner" title="watch">
-                <i class="pixa pixa-watch pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="watch">watch</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-wine">
-            <span class="inner" title="wine">
-                <i class="pixa pixa-wine pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="wine">wine</span>
-        </div>
-
-
-        <div class="preview" data-key="pixa pixa-zombie">
-            <span class="inner" title="zombie">
-                <i class="pixa pixa-zombie pixa-2x"></i>
-            </span>
-            <br>
-            <span class="label" title="zombie">zombie</span>
-        </div>
-
-    </div>
-    <h2>Sizing</h2>
-    <div class="d-size">
-        <h3>1x</h3>
-        <p>
-            <i class="pixa pixa-mushroom pixa-spin"></i>
-        </p>
-        <h3>2x</h3>
-        <p>
-            <i class="pixa pixa-mushroom pixa-spin pixa-2x"></i> <code>Add class "pixa-2x"</code>
-        </p>
-        <h3>3x</h3>
-        <p>
-            <i class="pixa pixa-mushroom pixa-spin pixa-3x"></i> <code>Add class "pixa-3x"</code>
-        </p>
-        <h3>4x</h3>
-        <p>
-            <i class="pixa pixa-mushroom pixa-spin pixa-4x"></i> <code>Add class "pixa-4x"</code>
-        </p>
-        <h3>5x</h3>
-        <p>
-            <i class="pixa pixa-mushroom pixa-spin pixa-5x"></i> <code>Add class "pixa-5x"</code>
-        </p>
-    </div>
-
-    <footer>
-        Pixa v1.1.0 - <a href="https://github.com/Silbad/pixa" target="_blank">GitHub</a> - <a href="https://silbad.com" target="_blank">Author</a>
-    </footer>
-
-</body>
 </html>
